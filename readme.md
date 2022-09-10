@@ -65,6 +65,87 @@ int[] plantHeights = new int[3];
 plantHeights[2] = 8; 
  ```
 
+ When we create the array with a known length but no known values, the array stores a default type value [(0 for int, null for string)](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/default-values). We then edit the array and swap out one of the default values with a new, specific value. In this case, we’re saying that at index 2 we want to swap the default value 0 for 8.
+
+We can also edit the values of pre-existing arrays. Again, we can’t add to the length of an existing array, but we can swap out values:
+
+```
+int[] plantHeights = { 3, 4, 6 };
+ 
+// plantHeights will be [3, 5, 6]
+plantHeights[1] = 5; 
+```
+---
+## [Built-In Methods](https://docs.microsoft.com/en-us/dotnet/api/system.array?view=net-6.0)
+
+1. [SORT](https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-6.0)
+
+The built-in method `Array.Sort()` , as its name suggests, sorts an array. This method is a quick way to further organize array data into a logical sequence:
+
+```
+int[] plantHeights = { 3, 6, 4, 1 };
+ 
+// plantHeights will be { 1, 3, 4, 6 }
+Array.Sort(plantHeights); 
+```
+
+`Sort()` takes an array as a parameter and edits the array so its values are sorted. If it is an array of integer values, it will sort them into ascending values (lowest to highest). If it’s an array of string values, they would be sorted alphabetically.
+
+2. [INDEX OF](https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-6.0)
+The Array method `Array.IndexOf()`takes a value and returns its index. `IndexOf()` works best when you have a specific value and need to know where it’s located in the array (or if it even exists!). 
+
+```
+int[] plantHeights = { 3, 6, 4, 1, 6, 8 };
+ 
+ // returns 1
+Array.IndexOf(plantHeights, 6);
+```
+
+`IndexOf()` typically takes two parameters: the first is the array and the second is the value whose index we’re locating. `IndexOf() `also has several overloads that allow you to search for a specific range of the array. If the value appears more than once in an array, it returns only the first occurrence within the specified range. If it cannot find the value, it returns the lower bound of the array, minus 1 (since most arrays start at 0, it’s usually -1).
+
+3. [FIND](https://docs.microsoft.com/en-us/dotnet/api/system.array.find?view=net-6.0)
+The Array method `Array.Find()` searches a one-dimensional array for a specific value or set of values that match a certain condition and returns the first occurrence in the array.
+```
+int[] plantHeights = { 3, 6, 4, 1, 6, 8 };
+ 
+// Find the first occurence of a plant height that is greater than 5 inches
+int firstHeight = Array.Find(plantHeights, height => height > 5);
+```
+
+`Find()` takes two parameters: the first is the array and the second is a predicate that defines what we’re looking for. A predicate is a method that takes one input and outputs a boolean. Unlike `IndexOf()`, `Find()` returns the actual values that match the condition, instead of their index.
+
+4. `Array.Copy()` [(documentation)](https://docs.microsoft.com/en-us/dotnet/api/system.array.copy?view=net-6.0) copies a range of elements from one array to a second array. It takes three parameters: the name of the array to be copied, the new array, and the length of the array elements.
+
+```
+string[] players = { "Emily", "Kyle", "Todd", "Rachel", "Grayson" };
+ 
+// This creates a new array with default values
+string[] playersCopy = new string[5];
+ 
+// This will populate the playersCopy array with { "Grayson", "Rachel", "Todd", "Kyle", "Emily" }
+Array.Copy(players, playersCopy, 5);
+```
+
+5. `Array.Reverse() `[(documentation)](https://docs.microsoft.com/en-us/dotnet/api/system.array.reverse?view=net-6.0) will switch the order of elements in an entire array. It can also reverse them in a portion of an array, if the overload is used:
+```
+string[] players = { "Emily", "Kyle", "Todd", "Rachel", "Grayson" };
+ 
+// This will return { "Grayson", "Rachel", "Todd", "Kyle", "Emily" }
+Array.Reverse(players);
+
+```
+
+6. `Array.Clear() ` [(documentation)](https://docs.microsoft.com/en-us/dotnet/api/system.array.clear?view=net-6.0) sets a range of elements in an array to the default value. It takes three parameters: the name of the array, the starting index of the range to clear, and the number of elements to clear.
+
+To clear an entire array, set the index to 0 (if it is zero-indexed) and then pass in the length of the array for the third parameter.
+
+```
+string[] players = { "Emily", "Kyle", "Todd", "Rachel", "Grayson" };
+ 
+// This will return { null, null, null, null, null }
+Array.Clear(players, 0, players.Length);
+```
+
 
 
 
