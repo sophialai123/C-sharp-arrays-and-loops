@@ -57,6 +57,42 @@ namespace BuildingArrays
             //sets a range of elements in an array to the default value
             Array.Clear(ratings, 0, ratings.Length);
             Console.WriteLine(ratings[0]);
+
+            /* While Loop */
+            int emails = 20;
+            while (emails > 0)
+            {
+                emails--;
+                Console.WriteLine($"{emails} emails are left");
+            }
+
+            //call outside of the while loop
+            Console.WriteLine("INBOX ZERO ACHIEVED!");
+
+            /* Do...While Loop */
+            bool buttonClick = true;
+
+            //run at least once
+            do
+            {
+                Console.WriteLine("BLARRRRRRRRR");
+            }
+            while (!buttonClick); //then if the button isn’t clicked (!buttonClick), it will repeat the alarm.
+
+            Console.WriteLine("Time for a five minute break.");
+
+            /* For loop */
+            for (int i = 0; i < 17; i++)
+            {
+                CreateTemplate (i);
+            }
+        }
+
+        //CreateTemplate() method
+        static void CreateTemplate(int week)
+        {
+            Console.WriteLine($"Week {week}");
+            Console.WriteLine("Announcements: \n ");
         }
     }
 }

@@ -145,7 +145,65 @@ string[] players = { "Emily", "Kyle", "Todd", "Rachel", "Grayson" };
 // This will return { null, null, null, null, null }
 Array.Clear(players, 0, players.Length);
 ```
+---
+# Loops
+## While Loop
+
+The `while loop `looks very similar to an `if` statement. Just like an `if` statement, it executes the code inside of it `if` the condition, a statement that evaluates to a boolean value, is true.
+
+a `while loop` will continue to execute the code inside of it, over and over again, while the condition is true. The computer is constantly checking to see if the condition is satisfied. For this reason, `while loops `are useful when you know at what point a program should stop, rather than the number of times it should repeat.
 
 
+In your video game, you want the player to rise up in the air as long as the user is pressing the spacebar:
+
+```
+while (spacebar == "down") 
+{
+ RiseUp();
+}
+
+```
+
+It will exit the while loop once the user releases the spacebar and then the rest of the program will continue.
+
+---
+## Do...While Loop
+Similar to the `while loop`, a `do...while `loop will continue running until a stopping condition is met. One key difference is that no matter what, a `do...while loop `will always run once.
 
 
+Instead of checking the condition before the code block executes, the program in the block runs once and then checks the conditional statement. It will either stop or continue to execute until the condition is no longer true. `do...while loops` are good for when a program should execute at least once and then depending on the circumstances, continue to execute or stop.
+
+
+In your video game, you want to show the start screen for at least one frame. If the user does not hit next, you want the start screen to continue to appear until they do so.
+
+```
+bool startGame = false;
+ 
+do
+{
+  ShowStartScreen();
+} while (!startGame);
+```
+In this example, we initialize a Boolean value `startGame` to the state `false`. The program runs once, showing the start screen for one frame, then checks to see if the player has started the game. If the player has yet to start the game, it will call `ShowStartScreen()` again and will then continue to show the start screen until the player presses start.
+
+---
+## For Loop
+
+The` for loop` tells the computer how many times to repeat the instructions using the `for` keyword and three expressions inside of parentheses. Each of these expressions use what’s known as an `iterator` variable, which is a variable that keeps track of how many times the program goes through the loop.
+
+These expressions are:
+
+1. Initialization: where the loop begins
+2. Stopping condition: the condition that the iterator variable is evaluated against
+3. Iteration statement: used to update the iterator variable on each loop
+
+The `for loop` is good to use when you know the number of times you’d like to perform a task before you begin, like printing three copies of a document or inserting eight rows into a table.
+
+```
+for (int i = 0; i < 10; i++)
+{
+  DisplayFlag();
+}
+```
+---
+## For Each Loop
