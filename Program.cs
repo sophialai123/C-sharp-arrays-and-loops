@@ -86,6 +86,37 @@ namespace BuildingArrays
             {
                 CreateTemplate (i);
             }
+
+            /* foreach Loop */
+            string[] todo =
+            {
+                "respond to email",
+                "make wireframe",
+                "program feature",
+                "fix bugs"
+            };
+            foreach (string item in todo)
+            {
+                CreateTodoItem (item);
+            }
+
+            /* Jump Statements */
+            bool buttonClick2 = true;
+            int count = 0;
+
+            do
+            {
+                Console.WriteLine("BLARRRRR");
+                count++;
+
+                //Once it rings 3 times, it should shut off
+                //even if the button has not been clicked
+                if (count == 3)
+                {
+                    break;
+                }
+            }
+            while (!buttonClick2);
         }
 
         //CreateTemplate() method
@@ -93,6 +124,12 @@ namespace BuildingArrays
         {
             Console.WriteLine($"Week {week}");
             Console.WriteLine("Announcements: \n ");
+        }
+
+        //CreateTodoItem() method.
+        static void CreateTodoItem(string item)
+        {
+            Console.WriteLine($"[] {item}");
         }
     }
 }
